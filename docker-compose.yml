@@ -1,0 +1,9 @@
+version: "3.9"  
+
+services:
+  websocket-api:
+    build: .       
+    ports:
+      - "3000:3000"  
+    container_name: my-websocket-chat 
+    restart: always 
