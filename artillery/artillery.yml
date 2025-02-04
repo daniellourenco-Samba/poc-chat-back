@@ -1,0 +1,20 @@
+config:
+  target: "ws://localhost:3000" 
+  phases:
+    - duration: 10        
+      arrivalRate: 5
+      rampTo: 250         
+
+scenarios:
+  - engine: "socketio"
+    flow:
+      - emit:
+          channel: "set_username"
+          data: "{{ $randomString() }}"
+      - loop:
+          - think: 1  
+          - emit:
+              channel: "message"
+              data: "Olá, esta é uma mensagem de teste!"
+        count: 10  
+
